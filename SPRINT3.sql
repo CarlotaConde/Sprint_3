@@ -6,7 +6,7 @@
 -- Després de crear la taula serà necessari que ingressis la informació del document denominat "dades_introduir_credit". Recorda mostrar el diagrama i realitzar una breu descripció d'aquest.
 
 CREATE TABLE credit_card (
-	id varchar(20) PRIMARY KEY,
+    id varchar(20) PRIMARY KEY,
     iban varchar(50),
     pan varchar(25),
     pin varchar(4),
@@ -67,9 +67,9 @@ WHERE id = '02C6201E-D90A-1859-B4EE-88D2986D3B02';
 -- Presenta la vista creada, ordenant les dades de major a menor mitjana de compra.
 
 CREATE VIEW 
-	VistaMarketing AS
+    VistaMarketing AS
 SELECT 
-	company.company_name AS 'Nom de la companyia', 
+    company.company_name AS 'Nom de la companyia', 
     company.phone AS 'Telèfon', 
     company.country AS 'Pais', 
     ROUND(AVG(transaction.amount),2) AS 'Mitja de compres'
@@ -93,34 +93,34 @@ FROM vistamarketing;
 
 SELECT *
 FROM 
-	vistamarketing
+  vistamarketing
 WHERE 
-	pais = 'Germany';
+  pais = 'Germany';
 
 -- crear view nova de solament alemanya:
 CREATE VIEW 
-	VistaMarketing_Germany AS
+   VistaMarketing_Germany AS
 SELECT 
-	company.company_name AS 'Nom de la companyia', 
+    company.company_name AS 'Nom de la companyia', 
     company.phone AS 'Telèfon', 
     company.country AS 'Pais', 
     ROUND(AVG(transaction.amount),2) AS 'Mitja de compres'
 FROM 
-	company
+    company
 JOIN transaction
 ON company.id = transaction.company_id
 WHERE 
-	company.country = 'Germany'
+    company.country = 'Germany'
     AND transaction.declined = 0
 GROUP BY 
-	company.company_name, company.phone, company.country
+    company.company_name, company.phone, company.country
 ORDER BY 
-	ROUND(AVG(transaction.amount),2) DESC;
+    ROUND(AVG(transaction.amount),2) DESC;
 
 -- comprobació:
 SELECT *
 FROM 
-	vistamarketing_germany;
+   vistamarketing_germany;
     
 -- NIVELL 3
 
@@ -182,9 +182,9 @@ ADD fecha_actual DATE;
 -- Mostra els resultats de la vista, ordena els resultats de manera descendent en funció de la variable ID de transaction.
 
 CREATE VIEW 
-	InformeTecnico AS
+   InformeTecnico AS
 SELECT 
-	transaction.id AS 'ID de la transacció',
+    transaction.id AS 'ID de la transacció',
     data_user.name AS "Nom de l'usuari/ària",
     data_user.surname AS "Cognom de l'usuari/ària",
     credit_card.iban AS 'IBAN de la targeta de crèdit usada',
