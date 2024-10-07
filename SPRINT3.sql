@@ -190,17 +190,15 @@ SELECT
     credit_card.iban AS 'IBAN de la targeta de crèdit usada',
     company.company_name AS 'Nom de la companyia de la transacció realitzada'
 FROM 
-	transaction
+   transaction
 JOIN credit_card
 ON transaction.credit_card_id = credit_card.id
-
 JOIN data_user
 ON transaction.user_id = data_user.id
-
 JOIN company
 ON transaction.company_id = company.id
 ORDER BY 
-	transaction.id DESC;
+   transaction.id DESC;
     
 -- comprobació:
 SELECT *
